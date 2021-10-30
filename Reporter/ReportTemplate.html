@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>PC Report</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial;
+        }
+        th {
+            background-color: grey;
+            padding: 0;
+        }
+        .table-wide {
+            width: 75%;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>PC Report</h1>
+        <div>
+            <strong>System Information</strong>
+        </div>
+    <table class="table-wide">
+        <tr>
+            <th>Manufacturer</th>
+            <th>Serial Number</th>
+            <th>Model Number</th>
+            <th>Processor</th>
+            <th>Architecture</th>
+            <th>Core Count</th>
+        </tr>
+        {{#SysQuery}}
+        <tr>
+            <td>{{Manufacturer}}</td>
+            <td>{{SerialNumber}}</td>
+            <td>{{ModelNumber}}</td>
+            <td>{{Processor}}</td>
+            <td>{{Architecture}}</td>
+            <td>{{CoreCount}}</td>
+        </tr>
+        {{/SysQuery}}
+    </table>
+</body>
+</html>

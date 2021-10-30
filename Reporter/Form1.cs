@@ -16,6 +16,7 @@ using System.Management.Instrumentation;
 using System.ServiceProcess;
 using MetroSet_UI.Forms;
 using Microsoft.Win32;
+using GrapeCity.Documents.Html;
 
 namespace Reporter
 {
@@ -321,6 +322,40 @@ namespace Reporter
             {
                 ReportLocation.Text = saveFileDialog1.FileName;
             }
+        }
+
+        private void GeneratePDF()
+        {
+            string Template;
+            var sysInfo = new
+            {
+                Manufacturer = ManufacturerData.Text,
+                SerialNumber = SerialNumberData.Text,
+                Model = ModelData.Text,
+                Architecture = ArchitectureData.Text,
+                Processor = ProcessorData.Text,
+                CoreCount = CoreCountData.Text
+            };
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string appName = assembly.GetName().Name;
+            var htmlTemplate = assembly.GetManifestResourceStream(appName + ".ReportTemplate.html");
+            var builder = new Stubble.Core.Builders.StubbleBuilder();
+            using (StreamReader reader = new StreamReader(htmlTemplate))
+            {
+                Template = reader.ReadToEnd();
+            }
+            var boundTemplate = builder.Build().Render(Template, new { SysQuery = sysInfo });
+
+            using (var re = new GcHtmlRenderer(boundTemplate))
+            {
+                var pdfSettings = new PdfSettings();
+                re.RenderToPdf(ReportLocation.Text, pdfSettings);
+            }
+        }
+
+        private void GeneratePDFButton_Click(object sender, EventArgs e)
+        {
+            GeneratePDF();
         }
     }
 }

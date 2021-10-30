@@ -150,12 +150,12 @@
             this.TabManager.Controls.Add(this.DrivesTab);
             this.TabManager.Controls.Add(this.MemoryTab);
             this.TabManager.Controls.Add(this.ReportTab);
-            this.TabManager.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TabManager.Cursor = System.Windows.Forms.Cursors.Default;
             this.TabManager.IsDerivedStyle = true;
             this.TabManager.ItemSize = new System.Drawing.Size(100, 38);
             this.TabManager.Location = new System.Drawing.Point(15, 98);
             this.TabManager.Name = "TabManager";
-            this.TabManager.SelectedIndex = 1;
+            this.TabManager.SelectedIndex = 4;
             this.TabManager.SelectedTextColor = System.Drawing.Color.White;
             this.TabManager.Size = new System.Drawing.Size(763, 309);
             this.TabManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -1017,6 +1017,7 @@
             this.GeneratePDFButton.Text = "Generate";
             this.GeneratePDFButton.ThemeAuthor = "Narwin";
             this.GeneratePDFButton.ThemeName = "MetroLite";
+            this.GeneratePDFButton.Click += new System.EventHandler(this.GeneratePDFButton_Click);
             // 
             // Form1
             // 
