@@ -31,8 +31,8 @@
             this.VersionLabel = new MetroSet_UI.Controls.MetroSetLabel();
             this.styleManager1 = new MetroSet_UI.Components.StyleManager();
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
-            this.metroSetTabControl1 = new MetroSet_UI.Controls.MetroSetTabControl();
-            this.metroSetSetTabPage1 = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.TabManager = new MetroSet_UI.Controls.MetroSetTabControl();
+            this.SystemTab = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.CoreCountData = new MetroSet_UI.Controls.MetroSetLabel();
             this.CoreCountLabel = new MetroSet_UI.Controls.MetroSetLabel();
             this.ArchitectureData = new MetroSet_UI.Controls.MetroSetLabel();
@@ -46,32 +46,50 @@
             this.SerialNumberData = new MetroSet_UI.Controls.MetroSetLabel();
             this.SerialNumberLabel = new MetroSet_UI.Controls.MetroSetLabel();
             this.SystemInformationLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetSetTabPage2 = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.WindowsTab = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.ProductIdData = new MetroSet_UI.Controls.MetroSetLabel();
+            this.ProductIdLabel = new MetroSet_UI.Controls.MetroSetLabel();
             this.WinVerData = new MetroSet_UI.Controls.MetroSetLabel();
             this.WinVerLabel = new MetroSet_UI.Controls.MetroSetLabel();
             this.WindowsInformationLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.MachineName = new MetroSet_UI.Controls.MetroSetLabel();
-            this.ProductIdData = new MetroSet_UI.Controls.MetroSetLabel();
-            this.ProductIdLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetSetTabPage3 = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.StorageDriveLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.CDDriveLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.PercentAvailable = new MetroSet_UI.Controls.MetroSetLabel();
-            this.TotalSpaceLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.AvailableSpaceLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.DriveColumnLabel = new MetroSet_UI.Controls.MetroSetLabel();
-            this.StorageDeviceList = new System.Windows.Forms.ListView();
-            this.CDDriveList = new System.Windows.Forms.ListView();
-            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.DrivesTab = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetSetTabPage4 = new MetroSet_UI.Child.MetroSetSetTabPage();
-            this.TotalMemoryLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.CDDriveList = new System.Windows.Forms.ListView();
+            this.StorageDeviceList = new System.Windows.Forms.ListView();
+            this.DriveColumnLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.AvailableSpaceLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.TotalSpaceLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.PercentAvailable = new MetroSet_UI.Controls.MetroSetLabel();
+            this.CDDriveLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.StorageDriveLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.MemoryTab = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.TotalMemoryData = new MetroSet_UI.Controls.MetroSetLabel();
-            this.metroSetTabControl1.SuspendLayout();
-            this.metroSetSetTabPage1.SuspendLayout();
-            this.metroSetSetTabPage2.SuspendLayout();
-            this.metroSetSetTabPage3.SuspendLayout();
-            this.metroSetSetTabPage4.SuspendLayout();
+            this.TotalMemoryLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.MachineName = new MetroSet_UI.Controls.MetroSetLabel();
+            this.MemoryList = new System.Windows.Forms.ListView();
+            this.CapacityLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.PartNumberLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.ManufactLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.LocationLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.CloseButton = new MetroSet_UI.Controls.MetroSetButton();
+            this.ReportButton = new MetroSet_UI.Controls.MetroSetButton();
+            this.ReportTab = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.ReportGenLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.ReportLocation = new MetroSet_UI.Controls.MetroSetTextBox();
+            this.PriceLabel = new MetroSet_UI.Controls.MetroSetLabel();
+            this.PriceData = new MetroSet_UI.Controls.MetroSetTextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.OpenFileDialogButton = new MetroSet_UI.Controls.MetroSetButton();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.GeneratePDFButton = new MetroSet_UI.Controls.MetroSetButton();
+            this.TabManager.SuspendLayout();
+            this.SystemTab.SuspendLayout();
+            this.WindowsTab.SuspendLayout();
+            this.DrivesTab.SuspendLayout();
+            this.MemoryTab.SuspendLayout();
+            this.ReportTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // VersionLabel
@@ -122,64 +140,65 @@
             this.metroSetControlBox1.ThemeAuthor = "Narwin";
             this.metroSetControlBox1.ThemeName = "MetroDark";
             // 
-            // metroSetTabControl1
+            // TabManager
             // 
-            this.metroSetTabControl1.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
-            this.metroSetTabControl1.AnimateTime = 200;
-            this.metroSetTabControl1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.metroSetTabControl1.Controls.Add(this.metroSetSetTabPage1);
-            this.metroSetTabControl1.Controls.Add(this.metroSetSetTabPage2);
-            this.metroSetTabControl1.Controls.Add(this.metroSetSetTabPage3);
-            this.metroSetTabControl1.Controls.Add(this.metroSetSetTabPage4);
-            this.metroSetTabControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.metroSetTabControl1.IsDerivedStyle = true;
-            this.metroSetTabControl1.ItemSize = new System.Drawing.Size(100, 38);
-            this.metroSetTabControl1.Location = new System.Drawing.Point(15, 98);
-            this.metroSetTabControl1.Name = "metroSetTabControl1";
-            this.metroSetTabControl1.SelectedIndex = 0;
-            this.metroSetTabControl1.SelectedTextColor = System.Drawing.Color.White;
-            this.metroSetTabControl1.Size = new System.Drawing.Size(763, 309);
-            this.metroSetTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.metroSetTabControl1.Speed = 100;
-            this.metroSetTabControl1.Style = MetroSet_UI.Enums.Style.Dark;
-            this.metroSetTabControl1.StyleManager = this.styleManager1;
-            this.metroSetTabControl1.TabIndex = 2;
-            this.metroSetTabControl1.ThemeAuthor = "Narwin";
-            this.metroSetTabControl1.ThemeName = "MetroDark";
-            this.metroSetTabControl1.UnselectedTextColor = System.Drawing.Color.Gray;
-            this.metroSetTabControl1.UseAnimation = false;
+            this.TabManager.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
+            this.TabManager.AnimateTime = 200;
+            this.TabManager.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.TabManager.Controls.Add(this.SystemTab);
+            this.TabManager.Controls.Add(this.WindowsTab);
+            this.TabManager.Controls.Add(this.DrivesTab);
+            this.TabManager.Controls.Add(this.MemoryTab);
+            this.TabManager.Controls.Add(this.ReportTab);
+            this.TabManager.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TabManager.IsDerivedStyle = true;
+            this.TabManager.ItemSize = new System.Drawing.Size(100, 38);
+            this.TabManager.Location = new System.Drawing.Point(15, 98);
+            this.TabManager.Name = "TabManager";
+            this.TabManager.SelectedIndex = 1;
+            this.TabManager.SelectedTextColor = System.Drawing.Color.White;
+            this.TabManager.Size = new System.Drawing.Size(763, 309);
+            this.TabManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.TabManager.Speed = 100;
+            this.TabManager.Style = MetroSet_UI.Enums.Style.Dark;
+            this.TabManager.StyleManager = this.styleManager1;
+            this.TabManager.TabIndex = 2;
+            this.TabManager.ThemeAuthor = "Narwin";
+            this.TabManager.ThemeName = "MetroDark";
+            this.TabManager.UnselectedTextColor = System.Drawing.Color.Gray;
+            this.TabManager.UseAnimation = false;
             // 
-            // metroSetSetTabPage1
+            // SystemTab
             // 
-            this.metroSetSetTabPage1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.metroSetSetTabPage1.Controls.Add(this.CoreCountData);
-            this.metroSetSetTabPage1.Controls.Add(this.CoreCountLabel);
-            this.metroSetSetTabPage1.Controls.Add(this.ArchitectureData);
-            this.metroSetSetTabPage1.Controls.Add(this.ProcessorData);
-            this.metroSetSetTabPage1.Controls.Add(this.ProcessorLabel);
-            this.metroSetSetTabPage1.Controls.Add(this.ArchitectureLabel);
-            this.metroSetSetTabPage1.Controls.Add(this.ModelData);
-            this.metroSetSetTabPage1.Controls.Add(this.ModelLabel);
-            this.metroSetSetTabPage1.Controls.Add(this.ManufacturerData);
-            this.metroSetSetTabPage1.Controls.Add(this.ManufacturerLabel);
-            this.metroSetSetTabPage1.Controls.Add(this.SerialNumberData);
-            this.metroSetSetTabPage1.Controls.Add(this.SerialNumberLabel);
-            this.metroSetSetTabPage1.Controls.Add(this.SystemInformationLabel);
-            this.metroSetSetTabPage1.Font = null;
-            this.metroSetSetTabPage1.ImageIndex = 0;
-            this.metroSetSetTabPage1.ImageKey = null;
-            this.metroSetSetTabPage1.IsDerivedStyle = true;
-            this.metroSetSetTabPage1.Location = new System.Drawing.Point(4, 42);
-            this.metroSetSetTabPage1.Name = "metroSetSetTabPage1";
-            this.metroSetSetTabPage1.Size = new System.Drawing.Size(755, 263);
-            this.metroSetSetTabPage1.Style = MetroSet_UI.Enums.Style.Dark;
-            this.metroSetSetTabPage1.StyleManager = this.styleManager1;
-            this.metroSetSetTabPage1.TabIndex = 0;
-            this.metroSetSetTabPage1.Text = "System";
-            this.metroSetSetTabPage1.ThemeAuthor = "Narwin";
-            this.metroSetSetTabPage1.ThemeName = "MetroDark";
-            this.metroSetSetTabPage1.ToolTipText = null;
-            this.metroSetSetTabPage1.Click += new System.EventHandler(this.metroSetSetTabPage1_Click);
+            this.SystemTab.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.SystemTab.Controls.Add(this.CoreCountData);
+            this.SystemTab.Controls.Add(this.CoreCountLabel);
+            this.SystemTab.Controls.Add(this.ArchitectureData);
+            this.SystemTab.Controls.Add(this.ProcessorData);
+            this.SystemTab.Controls.Add(this.ProcessorLabel);
+            this.SystemTab.Controls.Add(this.ArchitectureLabel);
+            this.SystemTab.Controls.Add(this.ModelData);
+            this.SystemTab.Controls.Add(this.ModelLabel);
+            this.SystemTab.Controls.Add(this.ManufacturerData);
+            this.SystemTab.Controls.Add(this.ManufacturerLabel);
+            this.SystemTab.Controls.Add(this.SerialNumberData);
+            this.SystemTab.Controls.Add(this.SerialNumberLabel);
+            this.SystemTab.Controls.Add(this.SystemInformationLabel);
+            this.SystemTab.Font = null;
+            this.SystemTab.ImageIndex = 0;
+            this.SystemTab.ImageKey = null;
+            this.SystemTab.IsDerivedStyle = true;
+            this.SystemTab.Location = new System.Drawing.Point(4, 42);
+            this.SystemTab.Name = "SystemTab";
+            this.SystemTab.Size = new System.Drawing.Size(755, 263);
+            this.SystemTab.Style = MetroSet_UI.Enums.Style.Dark;
+            this.SystemTab.StyleManager = this.styleManager1;
+            this.SystemTab.TabIndex = 0;
+            this.SystemTab.Text = "System";
+            this.SystemTab.ThemeAuthor = "Narwin";
+            this.SystemTab.ThemeName = "MetroDark";
+            this.SystemTab.ToolTipText = null;
+            this.SystemTab.Click += new System.EventHandler(this.metroSetSetTabPage1_Click);
             // 
             // CoreCountData
             // 
@@ -363,29 +382,57 @@
             this.SystemInformationLabel.ThemeAuthor = "Narwin";
             this.SystemInformationLabel.ThemeName = "MetroDark";
             // 
-            // metroSetSetTabPage2
+            // WindowsTab
             // 
-            this.metroSetSetTabPage2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.metroSetSetTabPage2.Controls.Add(this.ProductIdData);
-            this.metroSetSetTabPage2.Controls.Add(this.ProductIdLabel);
-            this.metroSetSetTabPage2.Controls.Add(this.WinVerData);
-            this.metroSetSetTabPage2.Controls.Add(this.WinVerLabel);
-            this.metroSetSetTabPage2.Controls.Add(this.WindowsInformationLabel);
-            this.metroSetSetTabPage2.Font = null;
-            this.metroSetSetTabPage2.ImageIndex = 0;
-            this.metroSetSetTabPage2.ImageKey = null;
-            this.metroSetSetTabPage2.IsDerivedStyle = true;
-            this.metroSetSetTabPage2.Location = new System.Drawing.Point(4, 42);
-            this.metroSetSetTabPage2.Name = "metroSetSetTabPage2";
-            this.metroSetSetTabPage2.Size = new System.Drawing.Size(755, 263);
-            this.metroSetSetTabPage2.Style = MetroSet_UI.Enums.Style.Dark;
-            this.metroSetSetTabPage2.StyleManager = this.styleManager1;
-            this.metroSetSetTabPage2.TabIndex = 1;
-            this.metroSetSetTabPage2.Text = "Windows";
-            this.metroSetSetTabPage2.ThemeAuthor = "Narwin";
-            this.metroSetSetTabPage2.ThemeName = "MetroDark";
-            this.metroSetSetTabPage2.ToolTipText = null;
-            this.metroSetSetTabPage2.Click += new System.EventHandler(this.metroSetSetTabPage2_Click);
+            this.WindowsTab.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.WindowsTab.Controls.Add(this.ProductIdData);
+            this.WindowsTab.Controls.Add(this.ProductIdLabel);
+            this.WindowsTab.Controls.Add(this.WinVerData);
+            this.WindowsTab.Controls.Add(this.WinVerLabel);
+            this.WindowsTab.Controls.Add(this.WindowsInformationLabel);
+            this.WindowsTab.Font = null;
+            this.WindowsTab.ImageIndex = 0;
+            this.WindowsTab.ImageKey = null;
+            this.WindowsTab.IsDerivedStyle = true;
+            this.WindowsTab.Location = new System.Drawing.Point(4, 42);
+            this.WindowsTab.Name = "WindowsTab";
+            this.WindowsTab.Size = new System.Drawing.Size(755, 263);
+            this.WindowsTab.Style = MetroSet_UI.Enums.Style.Dark;
+            this.WindowsTab.StyleManager = this.styleManager1;
+            this.WindowsTab.TabIndex = 1;
+            this.WindowsTab.Text = "Windows";
+            this.WindowsTab.ThemeAuthor = "Narwin";
+            this.WindowsTab.ThemeName = "MetroDark";
+            this.WindowsTab.ToolTipText = null;
+            this.WindowsTab.Click += new System.EventHandler(this.metroSetSetTabPage2_Click);
+            // 
+            // ProductIdData
+            // 
+            this.ProductIdData.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductIdData.IsDerivedStyle = true;
+            this.ProductIdData.Location = new System.Drawing.Point(122, 76);
+            this.ProductIdData.Name = "ProductIdData";
+            this.ProductIdData.Size = new System.Drawing.Size(387, 23);
+            this.ProductIdData.Style = MetroSet_UI.Enums.Style.Dark;
+            this.ProductIdData.StyleManager = null;
+            this.ProductIdData.TabIndex = 11;
+            this.ProductIdData.Text = "ProductId";
+            this.ProductIdData.ThemeAuthor = "Narwin";
+            this.ProductIdData.ThemeName = "MetroDark";
+            // 
+            // ProductIdLabel
+            // 
+            this.ProductIdLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductIdLabel.IsDerivedStyle = true;
+            this.ProductIdLabel.Location = new System.Drawing.Point(3, 76);
+            this.ProductIdLabel.Name = "ProductIdLabel";
+            this.ProductIdLabel.Size = new System.Drawing.Size(113, 23);
+            this.ProductIdLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.ProductIdLabel.StyleManager = null;
+            this.ProductIdLabel.TabIndex = 10;
+            this.ProductIdLabel.Text = "Product Id";
+            this.ProductIdLabel.ThemeAuthor = "Narwin";
+            this.ProductIdLabel.ThemeName = "MetroDark";
             // 
             // WinVerData
             // 
@@ -430,201 +477,33 @@
             this.WindowsInformationLabel.ThemeAuthor = "Narwin";
             this.WindowsInformationLabel.ThemeName = "MetroDark";
             // 
-            // MachineName
+            // DrivesTab
             // 
-            this.MachineName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MachineName.IsDerivedStyle = true;
-            this.MachineName.Location = new System.Drawing.Point(423, 43);
-            this.MachineName.Name = "MachineName";
-            this.MachineName.Size = new System.Drawing.Size(222, 24);
-            this.MachineName.Style = MetroSet_UI.Enums.Style.Dark;
-            this.MachineName.StyleManager = this.styleManager1;
-            this.MachineName.TabIndex = 3;
-            this.MachineName.Text = "MachineName";
-            this.MachineName.ThemeAuthor = "Narwin";
-            this.MachineName.ThemeName = "MetroDark";
-            // 
-            // ProductIdData
-            // 
-            this.ProductIdData.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductIdData.IsDerivedStyle = true;
-            this.ProductIdData.Location = new System.Drawing.Point(122, 76);
-            this.ProductIdData.Name = "ProductIdData";
-            this.ProductIdData.Size = new System.Drawing.Size(387, 23);
-            this.ProductIdData.Style = MetroSet_UI.Enums.Style.Dark;
-            this.ProductIdData.StyleManager = null;
-            this.ProductIdData.TabIndex = 11;
-            this.ProductIdData.Text = "ProductId";
-            this.ProductIdData.ThemeAuthor = "Narwin";
-            this.ProductIdData.ThemeName = "MetroDark";
-            // 
-            // ProductIdLabel
-            // 
-            this.ProductIdLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductIdLabel.IsDerivedStyle = true;
-            this.ProductIdLabel.Location = new System.Drawing.Point(3, 76);
-            this.ProductIdLabel.Name = "ProductIdLabel";
-            this.ProductIdLabel.Size = new System.Drawing.Size(113, 23);
-            this.ProductIdLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.ProductIdLabel.StyleManager = null;
-            this.ProductIdLabel.TabIndex = 10;
-            this.ProductIdLabel.Text = "Product Id";
-            this.ProductIdLabel.ThemeAuthor = "Narwin";
-            this.ProductIdLabel.ThemeName = "MetroDark";
-            // 
-            // metroSetSetTabPage3
-            // 
-            this.metroSetSetTabPage3.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.metroSetSetTabPage3.Controls.Add(this.metroSetLabel2);
-            this.metroSetSetTabPage3.Controls.Add(this.metroSetLabel1);
-            this.metroSetSetTabPage3.Controls.Add(this.CDDriveList);
-            this.metroSetSetTabPage3.Controls.Add(this.StorageDeviceList);
-            this.metroSetSetTabPage3.Controls.Add(this.DriveColumnLabel);
-            this.metroSetSetTabPage3.Controls.Add(this.AvailableSpaceLabel);
-            this.metroSetSetTabPage3.Controls.Add(this.TotalSpaceLabel);
-            this.metroSetSetTabPage3.Controls.Add(this.PercentAvailable);
-            this.metroSetSetTabPage3.Controls.Add(this.CDDriveLabel);
-            this.metroSetSetTabPage3.Controls.Add(this.StorageDriveLabel);
-            this.metroSetSetTabPage3.Font = null;
-            this.metroSetSetTabPage3.ImageIndex = 0;
-            this.metroSetSetTabPage3.ImageKey = null;
-            this.metroSetSetTabPage3.IsDerivedStyle = true;
-            this.metroSetSetTabPage3.Location = new System.Drawing.Point(4, 42);
-            this.metroSetSetTabPage3.Name = "metroSetSetTabPage3";
-            this.metroSetSetTabPage3.Size = new System.Drawing.Size(755, 263);
-            this.metroSetSetTabPage3.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetSetTabPage3.StyleManager = null;
-            this.metroSetSetTabPage3.TabIndex = 2;
-            this.metroSetSetTabPage3.Text = "Drives";
-            this.metroSetSetTabPage3.ThemeAuthor = "Narwin";
-            this.metroSetSetTabPage3.ThemeName = "MetroLite";
-            this.metroSetSetTabPage3.ToolTipText = null;
-            // 
-            // StorageDriveLabel
-            // 
-            this.StorageDriveLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StorageDriveLabel.IsDerivedStyle = true;
-            this.StorageDriveLabel.Location = new System.Drawing.Point(3, 19);
-            this.StorageDriveLabel.Name = "StorageDriveLabel";
-            this.StorageDriveLabel.Size = new System.Drawing.Size(263, 29);
-            this.StorageDriveLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.StorageDriveLabel.StyleManager = this.styleManager1;
-            this.StorageDriveLabel.TabIndex = 6;
-            this.StorageDriveLabel.Text = "Storage Drives";
-            this.StorageDriveLabel.ThemeAuthor = "Narwin";
-            this.StorageDriveLabel.ThemeName = "MetroDark";
-            // 
-            // CDDriveLabel
-            // 
-            this.CDDriveLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CDDriveLabel.IsDerivedStyle = true;
-            this.CDDriveLabel.Location = new System.Drawing.Point(404, 19);
-            this.CDDriveLabel.Name = "CDDriveLabel";
-            this.CDDriveLabel.Size = new System.Drawing.Size(290, 29);
-            this.CDDriveLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.CDDriveLabel.StyleManager = this.styleManager1;
-            this.CDDriveLabel.TabIndex = 7;
-            this.CDDriveLabel.Text = "CD/DVD Drive Information";
-            this.CDDriveLabel.ThemeAuthor = "Narwin";
-            this.CDDriveLabel.ThemeName = "MetroDark";
-            // 
-            // PercentAvailable
-            // 
-            this.PercentAvailable.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PercentAvailable.IsDerivedStyle = true;
-            this.PercentAvailable.Location = new System.Drawing.Point(283, 60);
-            this.PercentAvailable.Name = "PercentAvailable";
-            this.PercentAvailable.Size = new System.Drawing.Size(78, 23);
-            this.PercentAvailable.Style = MetroSet_UI.Enums.Style.Dark;
-            this.PercentAvailable.StyleManager = null;
-            this.PercentAvailable.TabIndex = 9;
-            this.PercentAvailable.Text = "% Free";
-            this.PercentAvailable.ThemeAuthor = "Narwin";
-            this.PercentAvailable.ThemeName = "MetroDark";
-            // 
-            // TotalSpaceLabel
-            // 
-            this.TotalSpaceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalSpaceLabel.IsDerivedStyle = true;
-            this.TotalSpaceLabel.Location = new System.Drawing.Point(200, 60);
-            this.TotalSpaceLabel.Name = "TotalSpaceLabel";
-            this.TotalSpaceLabel.Size = new System.Drawing.Size(66, 23);
-            this.TotalSpaceLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.TotalSpaceLabel.StyleManager = null;
-            this.TotalSpaceLabel.TabIndex = 10;
-            this.TotalSpaceLabel.Text = "Total Space";
-            this.TotalSpaceLabel.ThemeAuthor = "Narwin";
-            this.TotalSpaceLabel.ThemeName = "MetroDark";
-            // 
-            // AvailableSpaceLabel
-            // 
-            this.AvailableSpaceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AvailableSpaceLabel.IsDerivedStyle = true;
-            this.AvailableSpaceLabel.Location = new System.Drawing.Point(84, 60);
-            this.AvailableSpaceLabel.Name = "AvailableSpaceLabel";
-            this.AvailableSpaceLabel.Size = new System.Drawing.Size(74, 23);
-            this.AvailableSpaceLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.AvailableSpaceLabel.StyleManager = null;
-            this.AvailableSpaceLabel.TabIndex = 11;
-            this.AvailableSpaceLabel.Text = "Available Space";
-            this.AvailableSpaceLabel.ThemeAuthor = "Narwin";
-            this.AvailableSpaceLabel.ThemeName = "MetroDark";
-            // 
-            // DriveColumnLabel
-            // 
-            this.DriveColumnLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DriveColumnLabel.IsDerivedStyle = true;
-            this.DriveColumnLabel.Location = new System.Drawing.Point(0, 60);
-            this.DriveColumnLabel.Name = "DriveColumnLabel";
-            this.DriveColumnLabel.Size = new System.Drawing.Size(47, 23);
-            this.DriveColumnLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.DriveColumnLabel.StyleManager = null;
-            this.DriveColumnLabel.TabIndex = 12;
-            this.DriveColumnLabel.Text = "Drive";
-            this.DriveColumnLabel.ThemeAuthor = "Narwin";
-            this.DriveColumnLabel.ThemeName = "MetroDark";
-            // 
-            // StorageDeviceList
-            // 
-            this.StorageDeviceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.StorageDeviceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.StorageDeviceList.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StorageDeviceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.StorageDeviceList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.StorageDeviceList.HideSelection = false;
-            this.StorageDeviceList.Location = new System.Drawing.Point(4, 87);
-            this.StorageDeviceList.Name = "StorageDeviceList";
-            this.StorageDeviceList.Size = new System.Drawing.Size(373, 135);
-            this.StorageDeviceList.TabIndex = 13;
-            this.StorageDeviceList.UseCompatibleStateImageBehavior = false;
-            // 
-            // CDDriveList
-            // 
-            this.CDDriveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.CDDriveList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CDDriveList.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CDDriveList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.CDDriveList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.CDDriveList.HideSelection = false;
-            this.CDDriveList.Location = new System.Drawing.Point(404, 87);
-            this.CDDriveList.Name = "CDDriveList";
-            this.CDDriveList.Size = new System.Drawing.Size(375, 135);
-            this.CDDriveList.TabIndex = 14;
-            this.CDDriveList.UseCompatibleStateImageBehavior = false;
-            // 
-            // metroSetLabel1
-            // 
-            this.metroSetLabel1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(404, 60);
-            this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(47, 23);
-            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Dark;
-            this.metroSetLabel1.StyleManager = null;
-            this.metroSetLabel1.TabIndex = 15;
-            this.metroSetLabel1.Text = "Drive";
-            this.metroSetLabel1.ThemeAuthor = "Narwin";
-            this.metroSetLabel1.ThemeName = "MetroDark";
+            this.DrivesTab.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.DrivesTab.Controls.Add(this.metroSetLabel2);
+            this.DrivesTab.Controls.Add(this.metroSetLabel1);
+            this.DrivesTab.Controls.Add(this.CDDriveList);
+            this.DrivesTab.Controls.Add(this.StorageDeviceList);
+            this.DrivesTab.Controls.Add(this.DriveColumnLabel);
+            this.DrivesTab.Controls.Add(this.AvailableSpaceLabel);
+            this.DrivesTab.Controls.Add(this.TotalSpaceLabel);
+            this.DrivesTab.Controls.Add(this.PercentAvailable);
+            this.DrivesTab.Controls.Add(this.CDDriveLabel);
+            this.DrivesTab.Controls.Add(this.StorageDriveLabel);
+            this.DrivesTab.Font = null;
+            this.DrivesTab.ImageIndex = 0;
+            this.DrivesTab.ImageKey = null;
+            this.DrivesTab.IsDerivedStyle = true;
+            this.DrivesTab.Location = new System.Drawing.Point(4, 42);
+            this.DrivesTab.Name = "DrivesTab";
+            this.DrivesTab.Size = new System.Drawing.Size(755, 263);
+            this.DrivesTab.Style = MetroSet_UI.Enums.Style.Dark;
+            this.DrivesTab.StyleManager = null;
+            this.DrivesTab.TabIndex = 2;
+            this.DrivesTab.Text = "Drives";
+            this.DrivesTab.ThemeAuthor = "Narwin";
+            this.DrivesTab.ThemeName = "MetroDark";
+            this.DrivesTab.ToolTipText = null;
             // 
             // metroSetLabel2
             // 
@@ -640,39 +519,156 @@
             this.metroSetLabel2.ThemeAuthor = "Narwin";
             this.metroSetLabel2.ThemeName = "MetroDark";
             // 
-            // metroSetSetTabPage4
+            // metroSetLabel1
             // 
-            this.metroSetSetTabPage4.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.metroSetSetTabPage4.Controls.Add(this.TotalMemoryData);
-            this.metroSetSetTabPage4.Controls.Add(this.TotalMemoryLabel);
-            this.metroSetSetTabPage4.Font = null;
-            this.metroSetSetTabPage4.ImageIndex = 0;
-            this.metroSetSetTabPage4.ImageKey = null;
-            this.metroSetSetTabPage4.IsDerivedStyle = true;
-            this.metroSetSetTabPage4.Location = new System.Drawing.Point(4, 42);
-            this.metroSetSetTabPage4.Name = "metroSetSetTabPage4";
-            this.metroSetSetTabPage4.Size = new System.Drawing.Size(755, 263);
-            this.metroSetSetTabPage4.Style = MetroSet_UI.Enums.Style.Light;
-            this.metroSetSetTabPage4.StyleManager = null;
-            this.metroSetSetTabPage4.TabIndex = 3;
-            this.metroSetSetTabPage4.Text = "Memory";
-            this.metroSetSetTabPage4.ThemeAuthor = "Narwin";
-            this.metroSetSetTabPage4.ThemeName = "MetroLite";
-            this.metroSetSetTabPage4.ToolTipText = null;
+            this.metroSetLabel1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel1.IsDerivedStyle = true;
+            this.metroSetLabel1.Location = new System.Drawing.Point(404, 60);
+            this.metroSetLabel1.Name = "metroSetLabel1";
+            this.metroSetLabel1.Size = new System.Drawing.Size(47, 23);
+            this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Dark;
+            this.metroSetLabel1.StyleManager = null;
+            this.metroSetLabel1.TabIndex = 15;
+            this.metroSetLabel1.Text = "Drive";
+            this.metroSetLabel1.ThemeAuthor = "Narwin";
+            this.metroSetLabel1.ThemeName = "MetroDark";
             // 
-            // TotalMemoryLabel
+            // CDDriveList
             // 
-            this.TotalMemoryLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalMemoryLabel.IsDerivedStyle = true;
-            this.TotalMemoryLabel.Location = new System.Drawing.Point(13, 17);
-            this.TotalMemoryLabel.Name = "TotalMemoryLabel";
-            this.TotalMemoryLabel.Size = new System.Drawing.Size(176, 29);
-            this.TotalMemoryLabel.Style = MetroSet_UI.Enums.Style.Dark;
-            this.TotalMemoryLabel.StyleManager = this.styleManager1;
-            this.TotalMemoryLabel.TabIndex = 7;
-            this.TotalMemoryLabel.Text = "Total Memory";
-            this.TotalMemoryLabel.ThemeAuthor = "Narwin";
-            this.TotalMemoryLabel.ThemeName = "MetroDark";
+            this.CDDriveList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.CDDriveList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CDDriveList.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CDDriveList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.CDDriveList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.CDDriveList.HideSelection = false;
+            this.CDDriveList.Location = new System.Drawing.Point(404, 87);
+            this.CDDriveList.Name = "CDDriveList";
+            this.CDDriveList.Size = new System.Drawing.Size(375, 135);
+            this.CDDriveList.TabIndex = 14;
+            this.CDDriveList.UseCompatibleStateImageBehavior = false;
+            // 
+            // StorageDeviceList
+            // 
+            this.StorageDeviceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.StorageDeviceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StorageDeviceList.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StorageDeviceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.StorageDeviceList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.StorageDeviceList.HideSelection = false;
+            this.StorageDeviceList.Location = new System.Drawing.Point(4, 87);
+            this.StorageDeviceList.Name = "StorageDeviceList";
+            this.StorageDeviceList.Size = new System.Drawing.Size(373, 135);
+            this.StorageDeviceList.TabIndex = 13;
+            this.StorageDeviceList.UseCompatibleStateImageBehavior = false;
+            // 
+            // DriveColumnLabel
+            // 
+            this.DriveColumnLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DriveColumnLabel.IsDerivedStyle = true;
+            this.DriveColumnLabel.Location = new System.Drawing.Point(0, 60);
+            this.DriveColumnLabel.Name = "DriveColumnLabel";
+            this.DriveColumnLabel.Size = new System.Drawing.Size(47, 23);
+            this.DriveColumnLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.DriveColumnLabel.StyleManager = null;
+            this.DriveColumnLabel.TabIndex = 12;
+            this.DriveColumnLabel.Text = "Drive";
+            this.DriveColumnLabel.ThemeAuthor = "Narwin";
+            this.DriveColumnLabel.ThemeName = "MetroDark";
+            // 
+            // AvailableSpaceLabel
+            // 
+            this.AvailableSpaceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvailableSpaceLabel.IsDerivedStyle = true;
+            this.AvailableSpaceLabel.Location = new System.Drawing.Point(84, 60);
+            this.AvailableSpaceLabel.Name = "AvailableSpaceLabel";
+            this.AvailableSpaceLabel.Size = new System.Drawing.Size(74, 23);
+            this.AvailableSpaceLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.AvailableSpaceLabel.StyleManager = null;
+            this.AvailableSpaceLabel.TabIndex = 11;
+            this.AvailableSpaceLabel.Text = "Available Space";
+            this.AvailableSpaceLabel.ThemeAuthor = "Narwin";
+            this.AvailableSpaceLabel.ThemeName = "MetroDark";
+            // 
+            // TotalSpaceLabel
+            // 
+            this.TotalSpaceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalSpaceLabel.IsDerivedStyle = true;
+            this.TotalSpaceLabel.Location = new System.Drawing.Point(200, 60);
+            this.TotalSpaceLabel.Name = "TotalSpaceLabel";
+            this.TotalSpaceLabel.Size = new System.Drawing.Size(66, 23);
+            this.TotalSpaceLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.TotalSpaceLabel.StyleManager = null;
+            this.TotalSpaceLabel.TabIndex = 10;
+            this.TotalSpaceLabel.Text = "Total Space";
+            this.TotalSpaceLabel.ThemeAuthor = "Narwin";
+            this.TotalSpaceLabel.ThemeName = "MetroDark";
+            // 
+            // PercentAvailable
+            // 
+            this.PercentAvailable.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PercentAvailable.IsDerivedStyle = true;
+            this.PercentAvailable.Location = new System.Drawing.Point(283, 60);
+            this.PercentAvailable.Name = "PercentAvailable";
+            this.PercentAvailable.Size = new System.Drawing.Size(78, 23);
+            this.PercentAvailable.Style = MetroSet_UI.Enums.Style.Dark;
+            this.PercentAvailable.StyleManager = null;
+            this.PercentAvailable.TabIndex = 9;
+            this.PercentAvailable.Text = "% Free";
+            this.PercentAvailable.ThemeAuthor = "Narwin";
+            this.PercentAvailable.ThemeName = "MetroDark";
+            // 
+            // CDDriveLabel
+            // 
+            this.CDDriveLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CDDriveLabel.IsDerivedStyle = true;
+            this.CDDriveLabel.Location = new System.Drawing.Point(404, 19);
+            this.CDDriveLabel.Name = "CDDriveLabel";
+            this.CDDriveLabel.Size = new System.Drawing.Size(290, 29);
+            this.CDDriveLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.CDDriveLabel.StyleManager = this.styleManager1;
+            this.CDDriveLabel.TabIndex = 7;
+            this.CDDriveLabel.Text = "CD/DVD Drive Information";
+            this.CDDriveLabel.ThemeAuthor = "Narwin";
+            this.CDDriveLabel.ThemeName = "MetroDark";
+            // 
+            // StorageDriveLabel
+            // 
+            this.StorageDriveLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StorageDriveLabel.IsDerivedStyle = true;
+            this.StorageDriveLabel.Location = new System.Drawing.Point(3, 19);
+            this.StorageDriveLabel.Name = "StorageDriveLabel";
+            this.StorageDriveLabel.Size = new System.Drawing.Size(263, 29);
+            this.StorageDriveLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.StorageDriveLabel.StyleManager = this.styleManager1;
+            this.StorageDriveLabel.TabIndex = 6;
+            this.StorageDriveLabel.Text = "Storage Drives";
+            this.StorageDriveLabel.ThemeAuthor = "Narwin";
+            this.StorageDriveLabel.ThemeName = "MetroDark";
+            // 
+            // MemoryTab
+            // 
+            this.MemoryTab.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.MemoryTab.Controls.Add(this.LocationLabel);
+            this.MemoryTab.Controls.Add(this.ManufactLabel);
+            this.MemoryTab.Controls.Add(this.PartNumberLabel);
+            this.MemoryTab.Controls.Add(this.CapacityLabel);
+            this.MemoryTab.Controls.Add(this.MemoryList);
+            this.MemoryTab.Controls.Add(this.TotalMemoryData);
+            this.MemoryTab.Controls.Add(this.TotalMemoryLabel);
+            this.MemoryTab.Font = null;
+            this.MemoryTab.ImageIndex = 0;
+            this.MemoryTab.ImageKey = null;
+            this.MemoryTab.IsDerivedStyle = true;
+            this.MemoryTab.Location = new System.Drawing.Point(4, 42);
+            this.MemoryTab.Name = "MemoryTab";
+            this.MemoryTab.Size = new System.Drawing.Size(755, 263);
+            this.MemoryTab.Style = MetroSet_UI.Enums.Style.Dark;
+            this.MemoryTab.StyleManager = null;
+            this.MemoryTab.TabIndex = 3;
+            this.MemoryTab.Text = "Memory";
+            this.MemoryTab.ThemeAuthor = "Narwin";
+            this.MemoryTab.ThemeName = "MetroDark";
+            this.MemoryTab.ToolTipText = null;
             // 
             // TotalMemoryData
             // 
@@ -688,16 +684,354 @@
             this.TotalMemoryData.ThemeAuthor = "Narwin";
             this.TotalMemoryData.ThemeName = "MetroDark";
             // 
+            // TotalMemoryLabel
+            // 
+            this.TotalMemoryLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalMemoryLabel.IsDerivedStyle = true;
+            this.TotalMemoryLabel.Location = new System.Drawing.Point(13, 17);
+            this.TotalMemoryLabel.Name = "TotalMemoryLabel";
+            this.TotalMemoryLabel.Size = new System.Drawing.Size(176, 29);
+            this.TotalMemoryLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.TotalMemoryLabel.StyleManager = this.styleManager1;
+            this.TotalMemoryLabel.TabIndex = 7;
+            this.TotalMemoryLabel.Text = "Total Memory";
+            this.TotalMemoryLabel.ThemeAuthor = "Narwin";
+            this.TotalMemoryLabel.ThemeName = "MetroDark";
+            // 
+            // MachineName
+            // 
+            this.MachineName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MachineName.IsDerivedStyle = true;
+            this.MachineName.Location = new System.Drawing.Point(423, 43);
+            this.MachineName.Name = "MachineName";
+            this.MachineName.Size = new System.Drawing.Size(222, 24);
+            this.MachineName.Style = MetroSet_UI.Enums.Style.Dark;
+            this.MachineName.StyleManager = this.styleManager1;
+            this.MachineName.TabIndex = 3;
+            this.MachineName.Text = "MachineName";
+            this.MachineName.ThemeAuthor = "Narwin";
+            this.MachineName.ThemeName = "MetroDark";
+            // 
+            // MemoryList
+            // 
+            this.MemoryList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.MemoryList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MemoryList.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MemoryList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.MemoryList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.MemoryList.HideSelection = false;
+            this.MemoryList.Location = new System.Drawing.Point(13, 79);
+            this.MemoryList.Name = "MemoryList";
+            this.MemoryList.Size = new System.Drawing.Size(726, 188);
+            this.MemoryList.TabIndex = 9;
+            this.MemoryList.UseCompatibleStateImageBehavior = false;
+            // 
+            // CapacityLabel
+            // 
+            this.CapacityLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CapacityLabel.IsDerivedStyle = true;
+            this.CapacityLabel.Location = new System.Drawing.Point(606, 53);
+            this.CapacityLabel.Name = "CapacityLabel";
+            this.CapacityLabel.Size = new System.Drawing.Size(72, 23);
+            this.CapacityLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.CapacityLabel.StyleManager = null;
+            this.CapacityLabel.TabIndex = 13;
+            this.CapacityLabel.Text = "Capacity";
+            this.CapacityLabel.ThemeAuthor = "Narwin";
+            this.CapacityLabel.ThemeName = "MetroDark";
+            // 
+            // PartNumberLabel
+            // 
+            this.PartNumberLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartNumberLabel.IsDerivedStyle = true;
+            this.PartNumberLabel.Location = new System.Drawing.Point(419, 53);
+            this.PartNumberLabel.Name = "PartNumberLabel";
+            this.PartNumberLabel.Size = new System.Drawing.Size(120, 23);
+            this.PartNumberLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.PartNumberLabel.StyleManager = null;
+            this.PartNumberLabel.TabIndex = 14;
+            this.PartNumberLabel.Text = "Part Number";
+            this.PartNumberLabel.ThemeAuthor = "Narwin";
+            this.PartNumberLabel.ThemeName = "MetroDark";
+            // 
+            // ManufactLabel
+            // 
+            this.ManufactLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManufactLabel.IsDerivedStyle = true;
+            this.ManufactLabel.Location = new System.Drawing.Point(208, 53);
+            this.ManufactLabel.Name = "ManufactLabel";
+            this.ManufactLabel.Size = new System.Drawing.Size(117, 23);
+            this.ManufactLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.ManufactLabel.StyleManager = null;
+            this.ManufactLabel.TabIndex = 15;
+            this.ManufactLabel.Text = "Manufacturer";
+            this.ManufactLabel.ThemeAuthor = "Narwin";
+            this.ManufactLabel.ThemeName = "MetroDark";
+            // 
+            // LocationLabel
+            // 
+            this.LocationLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocationLabel.IsDerivedStyle = true;
+            this.LocationLabel.Location = new System.Drawing.Point(13, 53);
+            this.LocationLabel.Name = "LocationLabel";
+            this.LocationLabel.Size = new System.Drawing.Size(88, 23);
+            this.LocationLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.LocationLabel.StyleManager = null;
+            this.LocationLabel.TabIndex = 16;
+            this.LocationLabel.Text = "Location";
+            this.LocationLabel.ThemeAuthor = "Narwin";
+            this.LocationLabel.ThemeName = "MetroDark";
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CloseButton.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CloseButton.DisabledForeColor = System.Drawing.Color.Gray;
+            this.CloseButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.CloseButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.CloseButton.HoverTextColor = System.Drawing.Color.White;
+            this.CloseButton.IsDerivedStyle = true;
+            this.CloseButton.Location = new System.Drawing.Point(679, 413);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CloseButton.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.CloseButton.NormalTextColor = System.Drawing.Color.White;
+            this.CloseButton.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.CloseButton.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.CloseButton.PressTextColor = System.Drawing.Color.White;
+            this.CloseButton.Size = new System.Drawing.Size(99, 23);
+            this.CloseButton.Style = MetroSet_UI.Enums.Style.Dark;
+            this.CloseButton.StyleManager = this.styleManager1;
+            this.CloseButton.TabIndex = 4;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.ThemeAuthor = "Narwin";
+            this.CloseButton.ThemeName = "MetroDark";
+            // 
+            // ReportButton
+            // 
+            this.ReportButton.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.ReportButton.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.ReportButton.DisabledForeColor = System.Drawing.Color.Gray;
+            this.ReportButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportButton.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.ReportButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.ReportButton.HoverTextColor = System.Drawing.Color.White;
+            this.ReportButton.IsDerivedStyle = true;
+            this.ReportButton.Location = new System.Drawing.Point(554, 413);
+            this.ReportButton.Name = "ReportButton";
+            this.ReportButton.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.ReportButton.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.ReportButton.NormalTextColor = System.Drawing.Color.White;
+            this.ReportButton.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.ReportButton.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.ReportButton.PressTextColor = System.Drawing.Color.White;
+            this.ReportButton.Size = new System.Drawing.Size(108, 23);
+            this.ReportButton.Style = MetroSet_UI.Enums.Style.Dark;
+            this.ReportButton.StyleManager = this.styleManager1;
+            this.ReportButton.TabIndex = 5;
+            this.ReportButton.Text = "Generate Report";
+            this.ReportButton.ThemeAuthor = "Narwin";
+            this.ReportButton.ThemeName = "MetroDark";
+            // 
+            // ReportTab
+            // 
+            this.ReportTab.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ReportTab.Controls.Add(this.GeneratePDFButton);
+            this.ReportTab.Controls.Add(this.OpenFileDialogButton);
+            this.ReportTab.Controls.Add(this.PriceData);
+            this.ReportTab.Controls.Add(this.PriceLabel);
+            this.ReportTab.Controls.Add(this.ReportLocation);
+            this.ReportTab.Controls.Add(this.ReportGenLabel);
+            this.ReportTab.Controls.Add(this.metroSetLabel3);
+            this.ReportTab.Font = null;
+            this.ReportTab.ImageIndex = 0;
+            this.ReportTab.ImageKey = null;
+            this.ReportTab.IsDerivedStyle = true;
+            this.ReportTab.Location = new System.Drawing.Point(4, 42);
+            this.ReportTab.Name = "ReportTab";
+            this.ReportTab.Size = new System.Drawing.Size(755, 263);
+            this.ReportTab.Style = MetroSet_UI.Enums.Style.Light;
+            this.ReportTab.StyleManager = null;
+            this.ReportTab.TabIndex = 4;
+            this.ReportTab.Text = "Report";
+            this.ReportTab.ThemeAuthor = "Narwin";
+            this.ReportTab.ThemeName = "MetroLite";
+            this.ReportTab.ToolTipText = null;
+            // 
+            // metroSetLabel3
+            // 
+            this.metroSetLabel3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroSetLabel3.IsDerivedStyle = true;
+            this.metroSetLabel3.Location = new System.Drawing.Point(3, 135);
+            this.metroSetLabel3.Name = "metroSetLabel3";
+            this.metroSetLabel3.Size = new System.Drawing.Size(88, 23);
+            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Dark;
+            this.metroSetLabel3.StyleManager = null;
+            this.metroSetLabel3.TabIndex = 17;
+            this.metroSetLabel3.Text = "Location";
+            this.metroSetLabel3.ThemeAuthor = "Narwin";
+            this.metroSetLabel3.ThemeName = "MetroDark";
+            // 
+            // ReportGenLabel
+            // 
+            this.ReportGenLabel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportGenLabel.IsDerivedStyle = true;
+            this.ReportGenLabel.Location = new System.Drawing.Point(3, 16);
+            this.ReportGenLabel.Name = "ReportGenLabel";
+            this.ReportGenLabel.Size = new System.Drawing.Size(207, 29);
+            this.ReportGenLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.ReportGenLabel.StyleManager = this.styleManager1;
+            this.ReportGenLabel.TabIndex = 18;
+            this.ReportGenLabel.Text = "Report Generator";
+            this.ReportGenLabel.ThemeAuthor = "Narwin";
+            this.ReportGenLabel.ThemeName = "MetroDark";
+            // 
+            // ReportLocation
+            // 
+            this.ReportLocation.AutoCompleteCustomSource = null;
+            this.ReportLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.ReportLocation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.ReportLocation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.ReportLocation.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.ReportLocation.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.ReportLocation.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.ReportLocation.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportLocation.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.ReportLocation.Image = null;
+            this.ReportLocation.IsDerivedStyle = true;
+            this.ReportLocation.Lines = null;
+            this.ReportLocation.Location = new System.Drawing.Point(13, 161);
+            this.ReportLocation.MaxLength = 32767;
+            this.ReportLocation.Multiline = false;
+            this.ReportLocation.Name = "ReportLocation";
+            this.ReportLocation.ReadOnly = false;
+            this.ReportLocation.Size = new System.Drawing.Size(698, 31);
+            this.ReportLocation.Style = MetroSet_UI.Enums.Style.Dark;
+            this.ReportLocation.StyleManager = this.styleManager1;
+            this.ReportLocation.TabIndex = 19;
+            this.ReportLocation.Text = "FileLocation";
+            this.ReportLocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ReportLocation.ThemeAuthor = "Narwin";
+            this.ReportLocation.ThemeName = "MetroLite";
+            this.ReportLocation.UseSystemPasswordChar = false;
+            this.ReportLocation.WatermarkText = "";
+            this.ReportLocation.Click += new System.EventHandler(this.metroSetTextBox1_Click);
+            // 
+            // PriceLabel
+            // 
+            this.PriceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PriceLabel.IsDerivedStyle = true;
+            this.PriceLabel.Location = new System.Drawing.Point(3, 59);
+            this.PriceLabel.Name = "PriceLabel";
+            this.PriceLabel.Size = new System.Drawing.Size(88, 23);
+            this.PriceLabel.Style = MetroSet_UI.Enums.Style.Dark;
+            this.PriceLabel.StyleManager = null;
+            this.PriceLabel.TabIndex = 20;
+            this.PriceLabel.Text = "Price";
+            this.PriceLabel.ThemeAuthor = "Narwin";
+            this.PriceLabel.ThemeName = "MetroDark";
+            // 
+            // PriceData
+            // 
+            this.PriceData.AutoCompleteCustomSource = null;
+            this.PriceData.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.PriceData.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.PriceData.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(110)))), ((int)(((byte)(110)))));
+            this.PriceData.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.PriceData.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.PriceData.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.PriceData.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PriceData.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.PriceData.Image = null;
+            this.PriceData.IsDerivedStyle = true;
+            this.PriceData.Lines = null;
+            this.PriceData.Location = new System.Drawing.Point(13, 85);
+            this.PriceData.MaxLength = 32767;
+            this.PriceData.Multiline = false;
+            this.PriceData.Name = "PriceData";
+            this.PriceData.ReadOnly = false;
+            this.PriceData.Size = new System.Drawing.Size(698, 31);
+            this.PriceData.Style = MetroSet_UI.Enums.Style.Dark;
+            this.PriceData.StyleManager = this.styleManager1;
+            this.PriceData.TabIndex = 21;
+            this.PriceData.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PriceData.ThemeAuthor = "Narwin";
+            this.PriceData.ThemeName = "MetroLite";
+            this.PriceData.UseSystemPasswordChar = false;
+            this.PriceData.WatermarkText = "";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // OpenFileDialogButton
+            // 
+            this.OpenFileDialogButton.DisabledBackColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.DisabledBorderColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.DisabledForeColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.OpenFileDialogButton.HoverBorderColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.HoverColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.HoverTextColor = System.Drawing.Color.White;
+            this.OpenFileDialogButton.IsDerivedStyle = true;
+            this.OpenFileDialogButton.Location = new System.Drawing.Point(660, 161);
+            this.OpenFileDialogButton.Name = "OpenFileDialogButton";
+            this.OpenFileDialogButton.NormalBorderColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.NormalColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.NormalTextColor = System.Drawing.Color.White;
+            this.OpenFileDialogButton.PressBorderColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.PressColor = System.Drawing.Color.Gray;
+            this.OpenFileDialogButton.PressTextColor = System.Drawing.Color.White;
+            this.OpenFileDialogButton.Size = new System.Drawing.Size(51, 31);
+            this.OpenFileDialogButton.Style = MetroSet_UI.Enums.Style.Dark;
+            this.OpenFileDialogButton.StyleManager = this.styleManager1;
+            this.OpenFileDialogButton.TabIndex = 22;
+            this.OpenFileDialogButton.Text = "...";
+            this.OpenFileDialogButton.ThemeAuthor = "Narwin";
+            this.OpenFileDialogButton.ThemeName = "MetroLite";
+            this.OpenFileDialogButton.Click += new System.EventHandler(this.OpenFileDialogButton_Click);
+            // 
+            // GeneratePDFButton
+            // 
+            this.GeneratePDFButton.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.GeneratePDFButton.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.GeneratePDFButton.DisabledForeColor = System.Drawing.Color.Gray;
+            this.GeneratePDFButton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GeneratePDFButton.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.GeneratePDFButton.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.GeneratePDFButton.HoverTextColor = System.Drawing.Color.White;
+            this.GeneratePDFButton.IsDerivedStyle = true;
+            this.GeneratePDFButton.Location = new System.Drawing.Point(573, 209);
+            this.GeneratePDFButton.Name = "GeneratePDFButton";
+            this.GeneratePDFButton.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.GeneratePDFButton.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.GeneratePDFButton.NormalTextColor = System.Drawing.Color.White;
+            this.GeneratePDFButton.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.GeneratePDFButton.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.GeneratePDFButton.PressTextColor = System.Drawing.Color.White;
+            this.GeneratePDFButton.Size = new System.Drawing.Size(138, 30);
+            this.GeneratePDFButton.Style = MetroSet_UI.Enums.Style.Light;
+            this.GeneratePDFButton.StyleManager = null;
+            this.GeneratePDFButton.TabIndex = 23;
+            this.GeneratePDFButton.Text = "Generate";
+            this.GeneratePDFButton.ThemeAuthor = "Narwin";
+            this.GeneratePDFButton.ThemeName = "MetroLite";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ReportButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.MachineName);
-            this.Controls.Add(this.metroSetTabControl1);
+            this.Controls.Add(this.TabManager);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.VersionLabel);
+            this.MaximumSize = new System.Drawing.Size(800, 450);
+            this.MinimumSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
             this.Style = MetroSet_UI.Enums.Style.Dark;
             this.StyleManager = this.styleManager1;
@@ -705,11 +1039,12 @@
             this.TextColor = System.Drawing.Color.White;
             this.ThemeName = "MetroDark";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.metroSetTabControl1.ResumeLayout(false);
-            this.metroSetSetTabPage1.ResumeLayout(false);
-            this.metroSetSetTabPage2.ResumeLayout(false);
-            this.metroSetSetTabPage3.ResumeLayout(false);
-            this.metroSetSetTabPage4.ResumeLayout(false);
+            this.TabManager.ResumeLayout(false);
+            this.SystemTab.ResumeLayout(false);
+            this.WindowsTab.ResumeLayout(false);
+            this.DrivesTab.ResumeLayout(false);
+            this.MemoryTab.ResumeLayout(false);
+            this.ReportTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -718,9 +1053,9 @@
 
         private MetroSet_UI.Controls.MetroSetLabel VersionLabel;
         private MetroSet_UI.Controls.MetroSetControlBox metroSetControlBox1;
-        private MetroSet_UI.Controls.MetroSetTabControl metroSetTabControl1;
-        private MetroSet_UI.Child.MetroSetSetTabPage metroSetSetTabPage1;
-        private MetroSet_UI.Child.MetroSetSetTabPage metroSetSetTabPage2;
+        private MetroSet_UI.Controls.MetroSetTabControl TabManager;
+        private MetroSet_UI.Child.MetroSetSetTabPage SystemTab;
+        private MetroSet_UI.Child.MetroSetSetTabPage WindowsTab;
         private MetroSet_UI.Controls.MetroSetLabel SystemInformationLabel;
         private MetroSet_UI.Controls.MetroSetLabel MachineName;
         private MetroSet_UI.Components.StyleManager styleManager1;
@@ -741,7 +1076,7 @@
         private MetroSet_UI.Controls.MetroSetLabel WindowsInformationLabel;
         private MetroSet_UI.Controls.MetroSetLabel ProductIdData;
         private MetroSet_UI.Controls.MetroSetLabel ProductIdLabel;
-        private MetroSet_UI.Child.MetroSetSetTabPage metroSetSetTabPage3;
+        private MetroSet_UI.Child.MetroSetSetTabPage DrivesTab;
         private MetroSet_UI.Controls.MetroSetLabel DriveColumnLabel;
         private MetroSet_UI.Controls.MetroSetLabel AvailableSpaceLabel;
         private MetroSet_UI.Controls.MetroSetLabel TotalSpaceLabel;
@@ -752,9 +1087,26 @@
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel2;
         private MetroSet_UI.Controls.MetroSetLabel metroSetLabel1;
         private System.Windows.Forms.ListView CDDriveList;
-        private MetroSet_UI.Child.MetroSetSetTabPage metroSetSetTabPage4;
+        private MetroSet_UI.Child.MetroSetSetTabPage MemoryTab;
         private MetroSet_UI.Controls.MetroSetLabel TotalMemoryData;
         private MetroSet_UI.Controls.MetroSetLabel TotalMemoryLabel;
+        private System.Windows.Forms.ListView MemoryList;
+        private MetroSet_UI.Controls.MetroSetLabel LocationLabel;
+        private MetroSet_UI.Controls.MetroSetLabel ManufactLabel;
+        private MetroSet_UI.Controls.MetroSetLabel PartNumberLabel;
+        private MetroSet_UI.Controls.MetroSetLabel CapacityLabel;
+        private MetroSet_UI.Controls.MetroSetButton ReportButton;
+        private MetroSet_UI.Controls.MetroSetButton CloseButton;
+        private MetroSet_UI.Child.MetroSetSetTabPage ReportTab;
+        private MetroSet_UI.Controls.MetroSetTextBox ReportLocation;
+        private MetroSet_UI.Controls.MetroSetLabel ReportGenLabel;
+        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
+        private MetroSet_UI.Controls.MetroSetTextBox PriceData;
+        private MetroSet_UI.Controls.MetroSetLabel PriceLabel;
+        private MetroSet_UI.Controls.MetroSetButton OpenFileDialogButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private MetroSet_UI.Controls.MetroSetButton GeneratePDFButton;
     }
 }
 

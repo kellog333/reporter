@@ -13,6 +13,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Management;
 using System.Management.Instrumentation;
+using System.ServiceProcess;
 using MetroSet_UI.Forms;
 using Microsoft.Win32;
 
@@ -39,7 +40,7 @@ namespace Reporter
             long memoryTotal = new ManagementObjectSearcher("SELECT Capacity FROM Win32_PhysicalMemory").Get().Cast<ManagementObject>().Sum(x => Convert.ToInt64(x.Properties["Capacity"].Value));
 
             // Set tab default
-            metroSetTabControl1.SelectedTab = metroSetSetTabPage1;
+            TabManager.SelectedTab = SystemTab;
 
             // Load Version Number
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -91,6 +92,38 @@ namespace Reporter
 
             // Load Memory
             TotalMemoryData.Text = (memoryTotal / 1024 / 1024 / 1024).ToString() + " GB";
+
+            // Load Memory List
+            MemoryList.View = View.Details;
+            MemoryList.Columns.Add("", 0, HorizontalAlignment.Left);
+            MemoryList.Columns.Add("Location", 200, HorizontalAlignment.Left);
+            MemoryList.Columns.Add("Manufacturer", 200, HorizontalAlignment.Left);
+            MemoryList.Columns.Add("Part Number", 200, HorizontalAlignment.Left);
+            MemoryList.Columns.Add("Capacity", 100, HorizontalAlignment.Left);
+            LoadMemoryData();
+
+            // Report Location
+            string date = DateTime.Today.ToString("MM/dd/yyyy");
+            date = date.Replace("/", "_");
+            ReportLocation.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + date.ToString() + "_" + ManufacturerData.Text.Replace(" ", "_") + "_" + ModelData.Text.Replace(" ", "_") + ".pdf"; 
+
+            // Close Button
+            CloseButton.Click += new EventHandler(CloseWindow);
+
+            // Report Button
+            ReportButton.Click += new EventHandler(OpenReportTab);
+
+        }
+
+        private void OpenReportTab(object sender, EventArgs e)
+        {
+            TabManager.SelectedTab = ReportTab;
+        }
+
+        private void CloseWindow(object sender, EventArgs e)
+        {
+            Application.Exit();
+            Close();
         }
 
         private void SerialNumberData_Click(object sender, EventArgs e)
@@ -210,6 +243,83 @@ namespace Reporter
                     item.SubItems.Add("CD / DVD Drive");
                     CDDriveList.Items.Add(item);
                 }
+            }
+        }
+
+        private void LoadMemoryData()
+        {
+            string locator = "";
+            string manufacturer = "";
+            string partnumber = "";
+            string capacity = "";
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
+            ManagementObjectCollection moc = searcher.Get();
+            foreach(ManagementObject mo in moc)
+            {
+                ListViewItem item = new ListViewItem();
+                foreach(PropertyData data in mo.Properties)
+                {
+                    if(data.Name == "DeviceLocator")
+                    {
+                        if(data.Value != null)
+                        {
+                            locator = data.Value.ToString();
+                        } else
+                        {
+                            locator = "Unknown";
+                        }
+                    }
+                    if(data.Name == "Manufacturer")
+                    {
+                        if(data.Value != null)
+                        {
+                            manufacturer = data.Value.ToString();
+                        }
+                        else
+                        {
+                            manufacturer = "Unknown";
+                        }
+                    }
+                    if(data.Name == "PartNumber")
+                    {
+                        if(data.Value != null)
+                        {
+                            partnumber = data.Value.ToString();
+                        }
+                        else
+                        {
+                            partnumber = "Unknown";
+                        }
+                    }
+                    if(data.Name == "Capacity")
+                    {
+                       capacity = (Convert.ToInt64(data.Value) / 1024 / 1024 / 1024).ToString();
+                    }
+                }
+                item.SubItems.Add(locator);
+                item.SubItems.Add(manufacturer);
+                item.SubItems.Add(partnumber);
+                item.SubItems.Add(capacity + " GB");
+                MemoryList.Items.Add(item);
+            }
+        }
+
+        private void metroSetTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OpenFileDialogButton_Click(object sender, EventArgs e)
+        {
+            string date = DateTime.Today.ToString("MM/dd/yyyy");
+            date = date.Replace("/","-");
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Save Report";
+            saveFileDialog1.FileName = date.ToString() + "_" + ManufacturerData.Text.Replace(" ","_") + "_" + ModelData.Text.Replace(" ", "_");
+            saveFileDialog1.DefaultExt = "pdf";
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ReportLocation.Text = saveFileDialog1.FileName;
             }
         }
     }
