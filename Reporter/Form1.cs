@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Net.NetworkInformation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,11 @@ namespace Reporter
         {
             InitializeComponent();
         }
+        DataTable storageDrivesDT = new DataTable("StorageDrives");
+        DataTable opticalDriveDT = new DataTable("OpticalDrives");
+        DataTable networkDT = new DataTable("Network");
+        DataTable memoryDT = new DataTable("Memory");
+        DataSet storageDrivesDS = new DataSet();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -40,6 +46,7 @@ namespace Reporter
             string WinVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion", "ProductName", null).ToString() + " Build " + Environment.OSVersion.Version.Build.ToString();
             long memoryTotal = new ManagementObjectSearcher("SELECT Capacity FROM Win32_PhysicalMemory").Get().Cast<ManagementObject>().Sum(x => Convert.ToInt64(x.Properties["Capacity"].Value));
 
+
             // Set tab default
             TabManager.SelectedTab = SystemTab;
 
@@ -48,8 +55,10 @@ namespace Reporter
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             VersionLabel.Text = "v " + fileVersionInfo.ProductMajorPart + "." + fileVersionInfo.ProductMinorPart + "." + fileVersionInfo.ProductBuildPart;
 
-            // Load Machine Name
-            MachineName.Text = MachineNameG;
+
+
+                // Load Machine Name
+                MachineName.Text = MachineNameG;
 
             // Load Serial Number
             SerialNumberData.Text = SerialNumberG;
@@ -79,16 +88,22 @@ namespace Reporter
             StorageDeviceList.View = View.Details;
             StorageDeviceList.Columns.Add("", 0, HorizontalAlignment.Left);
             StorageDeviceList.Columns.Add("Drive", 70, HorizontalAlignment.Left);
+            storageDrivesDT.Columns.Add("Drive");
             StorageDeviceList.Columns.Add("Available", 100, HorizontalAlignment.Left);
+            storageDrivesDT.Columns.Add("Available");
             StorageDeviceList.Columns.Add("Total", 120, HorizontalAlignment.Left);
+            storageDrivesDT.Columns.Add("Total");
             StorageDeviceList.Columns.Add("%Used", 50, HorizontalAlignment.Left);
+            storageDrivesDT.Columns.Add("%Free");
             LoadStorageData();
 
             // Load CD Drives
             CDDriveList.View = View.Details;
             CDDriveList.Columns.Add("", 0, HorizontalAlignment.Left);
             CDDriveList.Columns.Add("Drive", 70, HorizontalAlignment.Left);
+            opticalDriveDT.Columns.Add("Drive");
             CDDriveList.Columns.Add("Name", 200, HorizontalAlignment.Left);
+            opticalDriveDT.Columns.Add("Name");
             LoadCDData();
 
             // Load Memory
@@ -98,10 +113,28 @@ namespace Reporter
             MemoryList.View = View.Details;
             MemoryList.Columns.Add("", 0, HorizontalAlignment.Left);
             MemoryList.Columns.Add("Location", 200, HorizontalAlignment.Left);
+            memoryDT.Columns.Add("Location");
             MemoryList.Columns.Add("Manufacturer", 200, HorizontalAlignment.Left);
+            memoryDT.Columns.Add("Manufacturer");
             MemoryList.Columns.Add("Part Number", 200, HorizontalAlignment.Left);
+            memoryDT.Columns.Add("PartNumber");
             MemoryList.Columns.Add("Capacity", 100, HorizontalAlignment.Left);
+            memoryDT.Columns.Add("Capacity");
             LoadMemoryData();
+
+            // Load Network Data
+            NetworkList.View = View.Details;
+            NetworkList.Columns.Add("", 0, HorizontalAlignment.Left);
+            NetworkList.Columns.Add("Adapter", 400, HorizontalAlignment.Left);
+            networkDT.Columns.Add("Adapter");
+            NetworkList.Columns.Add("Type", 150, HorizontalAlignment.Left);
+            networkDT.Columns.Add("Type");
+            NetworkList.Columns.Add("MACAddress", 175, HorizontalAlignment.Left);
+            networkDT.Columns.Add("MACAddress");
+            LoadNetworkData();
+
+            // Load Video Data
+            LoadVideoData();
 
             // Report Location
             string date = DateTime.Today.ToString("MM/dd/yyyy");
@@ -227,6 +260,7 @@ namespace Reporter
                     item.SubItems.Add(availableSpace.ToString() + " GB");
                     item.SubItems.Add(totalSpace.ToString() + " GB");
                     item.SubItems.Add(percentAvail.ToString() +"%");
+                    storageDrivesDT.Rows.Add(d.RootDirectory.ToString(), availableSpace.ToString() + " GB", totalSpace.ToString() + " GB", percentAvail.ToString() + "%");
                     StorageDeviceList.Items.Add(item);
                 }
             }
@@ -242,6 +276,7 @@ namespace Reporter
                     ListViewItem item = new ListViewItem();
                     item.SubItems.Add(d.RootDirectory.ToString());
                     item.SubItems.Add("CD / DVD Drive");
+                    opticalDriveDT.Rows.Add(d.RootDirectory.ToString(), "CD / DVD Drive");
                     CDDriveList.Items.Add(item);
                 }
             }
@@ -301,7 +336,37 @@ namespace Reporter
                 item.SubItems.Add(manufacturer);
                 item.SubItems.Add(partnumber);
                 item.SubItems.Add(capacity + " GB");
+                memoryDT.Rows.Add(locator, manufacturer, partnumber, capacity + " GB");
                 MemoryList.Items.Add(item);
+            }
+        }
+
+        private void LoadNetworkData()
+        {
+            NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+            foreach(NetworkInterface nic in networkInterfaces)
+            {
+                if(nic.NetworkInterfaceType.ToString() != "Loopback")
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.SubItems.Add(nic.Description.ToString());
+                    item.SubItems.Add(nic.NetworkInterfaceType.ToString());
+                    item.SubItems.Add(nic.GetPhysicalAddress().ToString());
+                    networkDT.Rows.Add(nic.Description.ToString(), nic.NetworkInterfaceType.ToString(), nic.GetPhysicalAddress().ToString());
+                    NetworkList.Items.Add(item);
+                }
+            }
+        }
+
+        private void LoadVideoData()
+        {
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            foreach(ManagementObject mo in searcher.Get())
+            {
+                GraphicsCardData.Text = mo["Name"].ToString();
+                GraphicsRAMData.Text = mo["AdapterRAM"].ToString();
+                ResolutionData.Text = mo["CurrentVerticalResolution"].ToString() + "x" + mo["CurrentHorizontalResolution"].ToString();
+                RefreshRateData.Text = mo["CurrentRefreshRate"].ToString();
             }
         }
 
@@ -324,6 +389,22 @@ namespace Reporter
             }
         }
 
+        private string GetImageData()
+        {
+            // Load Logo Image
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string appName = assembly.GetName().Name;
+            Stream stream = assembly.GetManifestResourceStream(appName + ".logo.png");
+            Image image = Image.FromStream(stream);
+            using (MemoryStream m = new MemoryStream())
+            {
+                image.Save(m, image.RawFormat);
+                byte[] imageBytes = m.ToArray();
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
+
         private void GeneratePDF()
         {
             string Template;
@@ -331,10 +412,68 @@ namespace Reporter
             {
                 Manufacturer = ManufacturerData.Text,
                 SerialNumber = SerialNumberData.Text,
-                Model = ModelData.Text,
+                ModelNumber = ModelData.Text,
                 Architecture = ArchitectureData.Text,
                 Processor = ProcessorData.Text,
                 CoreCount = CoreCountData.Text
+            };
+            var imageData = new
+            {
+                Image = GetImageData()
+            };
+            var osInfo = new
+            {
+                Version = WinVerData.Text,
+                ProductId = ProductIdData.Text
+            };
+            var storageDrives = from item in storageDrivesDT.Select()
+                                select new
+                                {
+                                    Drive = item["Drive"],
+                                    Available = item["Available"],
+                                    Total = item["Total"],
+                                    Free = item["%Free"]
+                                };
+            var opticals = from item in opticalDriveDT.Select()
+                           select new
+                           {
+                               Drive = item["Drive"],
+                               Name = item["Name"]
+                           };
+            var memory = from item in memoryDT.Select()
+                         select new
+                         {
+                             Location = item["Location"],
+                             Manufacturer = item["Manufacturer"],
+                             PartNumber = item["PartNumber"],
+                             Capacity = item["Capacity"]
+                         };
+            var networking = from item in networkDT.Select()
+                             select new
+                             {
+                                 Adapter = item["Adapter"],
+                                 Type = item["Type"],
+                                 MACAddress = item["MACAddress"]
+                             };
+            var TotalMemory = new
+            {
+                Total = TotalMemoryData.Text
+            };
+            var GraphicsData = new
+            {
+                Card = GraphicsCardData.Text,
+                VideoRAM = GraphicsRAMData.Text,
+                Refresh = RefreshRateData.Text,
+                Resolution = ResolutionData.Text
+            };
+            var priceData = "";
+            if(PriceData.Text.Length > 0)
+            {
+                priceData = "Total: $" + PriceData.Text;
+            }
+            var priceQ = new
+            {
+                Price = priceData
             };
             Assembly assembly = Assembly.GetExecutingAssembly();
             string appName = assembly.GetName().Name;
@@ -344,18 +483,32 @@ namespace Reporter
             {
                 Template = reader.ReadToEnd();
             }
-            var boundTemplate = builder.Build().Render(Template, new { SysQuery = sysInfo });
+            var boundTemplate = builder.Build().Render(Template, new {
+                ImageQuery = imageData,
+                SysQuery = sysInfo,
+                OsQuery = osInfo,
+                StorageQuery = storageDrives,
+                DVDQuery = opticals,
+                MemoryQuery = memory,
+                TotalMemoryQuery = TotalMemory,
+                GraphicsQuery = GraphicsData,
+                NetworkQuery = networking,
+                PriceQuery = priceQ
+            });
 
             using (var re = new GcHtmlRenderer(boundTemplate))
             {
                 var pdfSettings = new PdfSettings();
                 re.RenderToPdf(ReportLocation.Text, pdfSettings);
             }
+            Process.Start(ReportLocation.Text);
         }
 
         private void GeneratePDFButton_Click(object sender, EventArgs e)
         {
             GeneratePDF();
         }
+
+
     }
 }

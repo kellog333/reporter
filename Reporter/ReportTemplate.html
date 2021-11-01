@@ -20,32 +20,184 @@
             width: 75%;
             padding: 0;
         }
+        .memory {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .footer {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .spacer {
+            width: 50%;
+        }
+        .price {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
-    <h1>PC Report</h1>
-        <div>
-            <strong>System Information</strong>
-        </div>
+        {{#ImageQuery}}
+        <img src="data:image/gif;base64,{{Image}}" alt="Reboot Logo" />
+        {{/ImageQuery}}
+    <div>
+        <strong>System Information</strong>
+    </div>
     <table class="table-wide">
         <tr>
             <th>Manufacturer</th>
             <th>Serial Number</th>
             <th>Model Number</th>
-            <th>Processor</th>
-            <th>Architecture</th>
-            <th>Core Count</th>
         </tr>
         {{#SysQuery}}
         <tr>
             <td>{{Manufacturer}}</td>
             <td>{{SerialNumber}}</td>
             <td>{{ModelNumber}}</td>
+        </tr>
+        <tr>
+            <th>Processor</th>
+            <th>Architecture</th>
+            <th>Core Count</th>
+        </tr>
+        <tr>
             <td>{{Processor}}</td>
             <td>{{Architecture}}</td>
             <td>{{CoreCount}}</td>
         </tr>
         {{/SysQuery}}
     </table>
+    <br /><br />
+    <div>
+        <strong>Windows Information</strong>
+    </div>
+    <table class="table-wide">
+        {{#OsQuery}}
+        <tr>
+            <th>Windows Version</th>
+            <th>Product Serial Number</th>
+        </tr>
+        <tr>
+            <td>{{Version}}</td>
+            <td>{{ProductId}}</td>
+        </tr>
+        {{/OsQuery}}
+    </table>
+    <br /><br />
+    <div>
+        <strong>Storage Details</strong>
+    </div>
+    <table class="table-wide">
+        <tr>
+            <th>Drive</th>
+            <th>Available Space</th>
+            <th>Total Space</th>
+            <th>Percent Available</th>
+        </tr>
+        {{#StorageQuery}}
+        <tr>
+            <td>{{Drive}}</td>
+            <td>{{Available}}</td>
+            <td>{{Total}}</td>
+            <td>{{Free}}</td>
+        </tr>
+        {{/StorageQuery}}
+    </table>
+    <br /><br />
+    <div>
+        <strong>CD / DVD Drives</strong>
+    </div>
+    <table class="table-wide">
+        <tr style="background-color: grey">
+            <th>Drive</th>
+            <th>Name</th>
+        </tr>
+        {{#DVDQuery}}
+        <tr>
+            <td>{{Drive}}</td>
+            <td>{{Name}}</td>
+        </tr>
+        {{/DVDQuery}}
+    </table>
+    <br /><br />
+    <div class="memory">
+        <strong>Memory Information</strong>
+        {{#TotalMemoryQuery}}
+        <div>
+            <strong>Total Memory</strong>
+            {{Total}}
+        </div>
+        {{/TotalMemoryQuery}}
+    </div>
+    <table class="table-wide">
+        <tr>
+            <th>Location</th>
+            <th>Manufacturer</th>
+            <th>Part Number</th>
+            <th>Capacity</th>
+        </tr>
+        {{#MemoryQuery}}
+        <tr>
+            <td>{{Location}}</td>
+            <td>{{Manufacturer}}</td>
+            <td>{{PartNumber}}</td>
+            <td>{{Capacity}}</td>
+        </tr>
+        {{/MemoryQuery}}
+    </table>
+    <br /><br />
+    <div>
+        <strong>Graphics Information</strong>
+    </div>
+    <table class="table-wide">
+        {{#GraphicsQuery}}
+        <tr>
+            <th>Graphics Card</th>
+            <th>Video RAM</th>
+            <th>Refresh Rate</th>
+            <th>Resolution</th>
+        </tr>
+        <tr>
+            <td>{{Card}}</td>
+            <td>{{VideoRAM}}</td>
+            <td>{{Refresh}}</td>
+            <td>{{Resolution}}</td>
+        </tr>
+        {{/GraphicsQuery}}
+    </table>
+    <br /><br />
+          <div>
+              <strong>Network Information</strong>
+          </div>
+          <table class="table-wide">
+              <tr>
+                  <th>Adapter</th>
+                  <th>Interface Type</th>
+                  <th>Physical Address</th>
+              </tr>
+              {{#NetworkQuery}}
+              <tr>
+                  <td>{{Adapter}}</td>
+                  <td>{{Type}}</td>
+                  <td>{{MACAddress}}</td>
+              </tr>
+              {{/NetworkQuery}}
+          </table>
+          <div class="footer">
+              <div class="spacer">
+
+              </div>
+              {{#PriceQuery}}
+              <div class="price">
+                  <h1>{{Price}}</h1>
+              </div>
+              {{/PriceQuery}}
+          </div>
 </body>
 </html>

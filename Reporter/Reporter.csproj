@@ -134,6 +134,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ReportTemplate.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GrapeCity.Documents.Html.4.2.0.726\build\GrapeCity.Documents.Html.targets" Condition="Exists('..\packages\GrapeCity.Documents.Html.4.2.0.726\build\GrapeCity.Documents.Html.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
